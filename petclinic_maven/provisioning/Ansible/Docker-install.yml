@@ -1,4 +1,7 @@
-- hosts: all
+- name: "install docker en pull image"
+  hosts: localhost
+  connection: local
+
   become: true
    
    tasks:
