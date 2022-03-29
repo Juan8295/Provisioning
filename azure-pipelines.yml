@@ -30,7 +30,7 @@ steps:
     script: ansible-playbook ansible-terraform-install.yml
 
 - task: Bash@3
-  displayName: Install ansible
+  displayName: Install Docker
   inputs:
     workingDirectory: 'petclinic_maven/provisioning/Ansible'
     targetType: inline
