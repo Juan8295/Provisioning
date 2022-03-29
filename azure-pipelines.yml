@@ -27,3 +27,4 @@ steps:
   inputs:
     targetType: inline
     script: ansible-playbook ansible-terraform-install.yml
+    workingDirectory: home/azureuser/myagent/_work/3/s/petclinic_maven/provisioning/Ansible
