@@ -25,6 +25,6 @@ steps:
 - task: Bash@3
   displayName: Install ansible
   inputs:
-    targetType: inline
+    workingDirectory: petclinic_maven/provisioning/Ansible
+    argetType: inline
     script: ansible-playbook ansible-terraform-install.yml
-    workingDirectory: /petclinic_maven/provisioning/Ansible
