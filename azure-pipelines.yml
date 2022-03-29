@@ -23,8 +23,15 @@ steps:
     #goals: 'package'
 
 - task: Bash@3
-  displayName: Install ansible
+  displayName: Install ansible and terraform
   inputs:
     workingDirectory: 'petclinic_maven/provisioning/Ansible'
     targetType: inline
     script: ansible-playbook ansible-terraform-install.yml
+
+- task: Bash@3
+  displayName: Install ansible
+  inputs:
+    workingDirectory: 'petclinic_maven/provisioning/Ansible'
+    targetType: inline
+    script: ansible-playbook Docker-installation.yml
