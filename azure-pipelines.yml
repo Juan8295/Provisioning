@@ -7,16 +7,23 @@ trigger:
 - Petclinic
 
 pool:
-  vmImage: ubuntu-latest
+  name: vm-azure 
 
 steps:
-- task: Maven@3
+
+#- task: Maven@3
+  #inputs:
+    #mavenPomFile: 'pom.xml'
+    #mavenOptions: '-Xmx3072m'
+    #javaHomeOption: 'JDKVersion'
+    #jdkVersionOption: '1.8'
+    #jdkArchitectureOption: 'x64'
+    #publishJUnitResults: true
+    #testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    #goals: 'package'
+
+- task: Bash@3
+  displayName: Install ansible
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    targetType: inline
+    script: ansible-playbook ansible-terraform-install.yml
