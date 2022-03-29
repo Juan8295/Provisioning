@@ -34,4 +34,4 @@ steps:
   inputs:
     workingDirectory: 'petclinic_maven/provisioning/Ansible'
     targetType: inline
-    script: ansible-playbook Docker-installation.yml
+    script: ansible-playbook Docker-install.yml
