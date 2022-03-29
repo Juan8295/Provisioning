@@ -1,13 +1,13 @@
 - name: "install docker en pull image"
-  hosts: localhost
+  hosts: all
   connection: local
-
+  
   become: true
-   
-   tasks:
+
+  tasks:
     - name: Install aptitude using apt
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
-
+    
     - name: Install required system packages
       apt: name={{ item }} state=latest update_cache=yes
       loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
