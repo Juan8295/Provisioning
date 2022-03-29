@@ -1,5 +1,5 @@
 - name: "install docker en pull image"
-  hosts: all
+  hosts: localhost
   connection: local
   
   become: true
