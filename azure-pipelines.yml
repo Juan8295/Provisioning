@@ -41,3 +41,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: sudo docker login -u "juan8295" -p $(DOCKERPASSW) docker.io
+
+- task: Bash@3
+  displayName: pull dockerimage
+  inputs:
+    targetType: 'inline'
+    script: docker pull juan8295/clinic_tomcat:1.0
