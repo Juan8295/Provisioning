@@ -35,3 +35,9 @@ steps:
     workingDirectory: 'petclinic_maven/provisioning/Ansible'
     targetType: inline
     script: ansible-playbook Docker-install.yml
+
+- task: Bash@3
+  displayName: docker login
+  inputs:
+    targetType: 'inline'
+    script: sudo docker login -u "juan8295" -p $(DOCKERPASSW) docker.io
