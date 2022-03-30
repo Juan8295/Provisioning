@@ -46,4 +46,4 @@ steps:
   displayName: pull dockerimage
   inputs:
     targetType: 'inline'
-    script: docker pull juan8295/clinic_tomcat:1.0
+    script: sudo docker pull juan8295/clinic_tomcat:1.0
