@@ -13,7 +13,6 @@ steps:
 - task: AzureCLI@2
   displayName: login to AzureCLI
   inputs:
-    azureSubscription: f82b3c62-b635-402b-afa2-a1a807bbfd42
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az account show'
