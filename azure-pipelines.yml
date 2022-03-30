@@ -15,7 +15,7 @@ steps:
   inputs:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az --version'
+    inlineScript: 'az account show'
 
 #- task: 
 #- task: Bash@3
