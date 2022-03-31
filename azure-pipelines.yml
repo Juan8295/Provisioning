@@ -11,11 +11,11 @@ pool:
 
 steps:
 
-- task: TerraformCLI@0
-  displayName: check terraform version
+- task: Bash@3
+  displayName: terraform version
   inputs:
-    command: version
-
+    targetType: inline
+    script: terraform --version
 - task: AzureCLI@2
   displayName: login to AzureCLI
   inputs:
