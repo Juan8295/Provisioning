@@ -12,7 +12,7 @@ pool:
 steps:
 
  task: TerraformCLI@0
-  displayName: 'check terraform version'
+  displayName: check terraform version
   inputs:
     command: version
 
