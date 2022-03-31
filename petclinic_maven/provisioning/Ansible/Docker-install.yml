@@ -29,8 +29,8 @@
       pip:
         name: docker
 
-    - name: Pull default Docker image
-      docker_image:
-        name: "juan8295/clinic_tomcat:1.0"
-        source: pull
+    #- name: Pull default Docker image
+      #docker_image:
+        #name: "juan8295/clinic_tomcat:1.0"
+        #source: pull
         

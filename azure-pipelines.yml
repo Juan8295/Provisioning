@@ -11,27 +11,42 @@ pool:
 
 steps:
 
-#- task: Maven@3
+- task: Bash@3
+  displayName: terraform version
+  inputs:
+    targetType: inline
+    script: terraform --version
+- task: AzureCLI@2
+  displayName: login to AzureCLI
+  inputs:
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az account show'
+    
+
+#- task: 
+#- task: Bash@3
+  #displayName: Install ansible and terraform
   #inputs:
-    #mavenPomFile: 'pom.xml'
-    #mavenOptions: '-Xmx3072m'
-    #javaHomeOption: 'JDKVersion'
-    #jdkVersionOption: '1.8'
-    #jdkArchitectureOption: 'x64'
-    #publishJUnitResults: true
-    #testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    #goals: 'package'
+    #workingDirectory: 'petclinic_maven/provisioning/Ansible'
+    #targetType: inline
+    #script: ansible-playbook ansible-terraform-install.yml
 
-- task: Bash@3
-  displayName: Install ansible and terraform
-  inputs:
-    workingDirectory: 'petclinic_maven/provisioning/Ansible'
-    targetType: inline
-    script: ansible-playbook ansible-terraform-install.yml
+#- task: Bash@3
+  #displayName: Install Docker
+  #inputs:
+    #workingDirectory: 'petclinic_maven/provisioning/Ansible'
+    #targetType: inline
+    #script: ansible-playbook Docker-install.yml
 
-- task: Bash@3
-  displayName: Install Docker
-  inputs:
-    workingDirectory: 'petclinic_maven/provisioning/Ansible'
-    targetType: inline
-    script: ansible-playbook Docker-install.yml
+#- task: Bash@3
+  #displayName: docker login
+  #inputs:
+    #targetType: 'inline'
+    #script: sudo docker login -u "juan8295" -p $(DOCKERPASSW) docker.io
+
+#- task: Bash@3
+  #displayName: pull dockerimage
+  #inputs:
+    #targetType: 'inline'
+    #script: sudo docker pull juan8295/clinic_tomcat:1.0
