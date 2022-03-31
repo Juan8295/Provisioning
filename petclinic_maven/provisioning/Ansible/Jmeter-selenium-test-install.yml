@@ -39,10 +39,10 @@
     - name: unzip chromedriver
       shell: cd /opt && unzip chromedriver_linux64.zip
       
-    - name: change ownership of chromedriver to Root
-      shell: sudo chown root:root /usr/bin/chromedriver
-      
-    - name: give VMTest execute permission
+    - name: change ownership to root
+      shell: sudo chown root:root /opt/chromedriver
+
+    - name: give VMTest permission to exe
       shell: sudo chmod +x /opt/chromedriver
       
       
