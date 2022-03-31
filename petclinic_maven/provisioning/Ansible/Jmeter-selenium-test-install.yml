@@ -1,6 +1,6 @@
 - name: "install Jmeter and selenium"
-  hosts: localhost
-  connection: local
+  hosts: vm-azure
+  remoteuser: VMTest
 
   tasks:
     
@@ -27,7 +27,23 @@
     - name: install selenium
       shell: pip3 install selenium
       
+    - name: download google-chrome
+      shell: cd /opt && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+    - name: install google-chrome
+      shell: cd /opt && sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+    - name: download chromdriver
+      shell: cd /opt && wget https://chromedriver.storage.googleapis.com/99.0.4844.51/chromedriver_linux64.zip
+
+    - name: unzip chromedriver
+      shell: cd /opt && unzip chromedriver_linux64.zip
       
+    - name: change ownership of chromedriver to Root
+      shell: sudo chown root:root /usr/bin/chromedriver
+      
+    - name: give VMTest execute permission
+      shell: sudo chmod +x /opt/chromedriver
       
       
       #register: "output"
