@@ -10,6 +10,12 @@ pool:
   name: vm-azure 
 
 steps:
+
+ task: TerraformCLI@0
+  displayName: 'check terraform version'
+  inputs:
+    command: version
+
 - task: AzureCLI@2
   displayName: login to AzureCLI
   inputs:
