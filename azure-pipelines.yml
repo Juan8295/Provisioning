@@ -11,11 +11,6 @@ pool:
 
 steps:
 
-- task: Bash@3
-  displayName: terraform version
-  inputs:
-    targetType: inline
-    script: terraform --version
 - task: AzureCLI@2
   displayName: login to AzureCLI
   inputs:
@@ -24,7 +19,31 @@ steps:
     inlineScript: 'az account show'
     
 
-#- task: 
+#- task: TerraformCLI@0
+  #inputs:
+    #command: 'init'
+    #workingDirectory: 'petclinic_maven/provisioning/Terraform'
+
+#- task: TerraformCLI@0
+  #inputs:
+    #command: 'plan'
+    #environmentServiceName: 
+    #providerAzureRmSubscriptionId: 
+    #runAzLogin: true
+    #allowTelemetryCollection: true
+    #publishPlanResults: 'plan.tf'
+    #workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    
+
+#- task: TerraformCLI@0
+  #inputs:
+    #command: 'apply'
+    #workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    #environmentServiceName: 
+    #providerAzureRmSubscriptionId: 
+    #runAzLogin: true
+    #allowTelemetryCollection: true
+
 #- task: Bash@3
   #displayName: Install ansible and terraform
   #inputs:
