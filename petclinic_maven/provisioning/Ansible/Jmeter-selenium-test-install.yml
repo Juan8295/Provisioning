@@ -1,0 +1,37 @@
+- name: "install Jmeter and selenium"
+  hosts: localhost
+  connection: local
+
+  tasks:
+    
+    - name: install prerequisites Jmeter and selenium
+      become: yes
+      apt: 
+        force_apt_get: yes
+        pkg:
+         - openjdk-8-jdk
+         - wget
+         - zip
+         - unzip
+         - python3
+         - python3-pip
+      
+
+
+    - name: download Jmeter
+      shell: cd /opt && wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.3.zip
+
+    - name: unzip Jmeter
+      shell: cd /opt && unzip apache-jmeter-5.4.3.zip
+
+    - name: install selenium
+      shell: pip3 install selenium
+      
+      
+      
+      
+      #register: "output"
+    #- debug: var=output.stdout_lines 
+      
+
+  
