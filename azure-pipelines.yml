@@ -19,26 +19,26 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: 'az account show'
 
-#- task: TerraformCLI@0
-  #inputs:
-    #command: 'init'
-    #workingDirectory: 'petclinic_maven/provisioning/Terraform'
-    #allowTelemetryCollection: true
-#- task: TerraformCLI@0
-  #inputs:
-    #command: 'validate'
-    #allowTelemetryCollection: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    allowTelemetryCollection: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'validate'
+    allowTelemetryCollection: true
 
-#- task: TerraformCLI@0
-  #inputs:
-    #command: 'plan'
-    #environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
-    #providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
-    #runAzLogin: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'plan'
+    environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
+    providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
+    runAzLogin: true
     #commandOptions: '-out'
-    #allowTelemetryCollection: true
-    #publishPlanResults: 'tfplan'
-    #workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    allowTelemetryCollection: true
+    publishPlanResults: 'tfplan'
+    workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
 - task: TerraformCLI@0
   inputs:
