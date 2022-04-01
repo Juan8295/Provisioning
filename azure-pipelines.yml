@@ -37,13 +37,13 @@ steps:
     runAzLogin: true
     commandOptions: '-out'
     allowTelemetryCollection: true
-    publishPlanResults: 'tfplan'
+    #publishPlanResults: 'tfplan'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
 - task: TerraformCLI@0
   inputs:
     command: 'apply'
-    commandOptions: tfplan
+    #commandOptions: tfplan
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
     environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
     providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
