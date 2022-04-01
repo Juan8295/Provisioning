@@ -23,7 +23,11 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
-
+    allowTelemetryCollection: true
+- task: TerraformCLI@0
+  inputs:
+    command: 'validate'
+    allowTelemetryCollection: true
 #- task: TerraformCLI@0
   #inputs:
     #command: 'plan'
