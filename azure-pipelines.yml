@@ -11,13 +11,13 @@ pool:
 
 steps:
 
-- task: AzureCLI@2
-  displayName: login to AzureCLI
-  inputs:
-    azureSubscription: 'azure-cli-2022-04-01-09-22-56'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az account show'
+# task: AzureCLI@2
+  #displayName: login to AzureCLI
+  #inputs:
+    #azureSubscription: 'azure-cli-2022-04-01-09-22-56'
+    #scriptType: 'bash'
+    #scriptLocation: 'inlineScript'
+    #inlineScript: 'az account show'
 
 - task: TerraformCLI@0
   inputs:
