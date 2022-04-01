@@ -19,15 +19,10 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: 'az account show'
 
-- task: Bash@3
+- task: TerraformCLI@0
   inputs:
-    targetType: inline
-    script: pwd
-
-#- task: TerraformCLI@0
-  #inputs:
-    #command: 'init'
-    #workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    command: 'init'
+    workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
 #- task: TerraformCLI@0
   #inputs:
