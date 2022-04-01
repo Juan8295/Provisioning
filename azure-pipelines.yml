@@ -58,10 +58,10 @@ steps:
     #workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
 - task: Bash@3
-  displayName: Store public IP of testVM in testvm_public_IP
+  displayName: Store public IP of testVM in VMTest_public_IP
   inputs:
     targetType: inline
-    script: terraform output -raw public_ip_address > ~/testvm_public_IP
+    script: terraform output -raw public_ip_address > ~/VMTest_public_IP
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
 #- task: Bash@3
