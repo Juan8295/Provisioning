@@ -28,6 +28,12 @@
     - name: Install Docker Module for Python
       pip:
         name: docker
+        
+    - name: Log into DockerHub
+      docker_login:
+      username: juan8295
+      password: Alejandro8295!
+      email: juan.goez.cordoba@devoteam.com
 
     #- name: Pull default Docker image
       #docker_image:
