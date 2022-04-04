@@ -9,8 +9,12 @@
         #image: juan8295/clinic_tomcat:1.0
         #command: docker run -itd -p 8090:8080 clinic_tomcat:1.0 /bin/bash
         
-    - name: Create container
-      become: true 
-      command: docker run -itd -p 8090:8080 clinic_tomcat:1.0
 
- 
+    - name: ensure a container is running
+      docker_container:
+        name: TestContainer
+        state: started
+        image: juan8295/clinic_tomcat:1.0
+        pull: true
+        ports:
+          - "8080:8999"
