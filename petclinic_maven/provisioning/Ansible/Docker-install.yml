@@ -1,6 +1,6 @@
 - name: "install docker en pull image"
-  hosts: localhost
-  connection: local
+  hosts: all
+  user: VMTest
   
   become: true
 
