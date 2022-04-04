@@ -19,6 +19,4 @@
         image: juan8295/clinic_tomcat:1.0
         pull: true
         ports:
-          - "8080:8999"
-        register: "output"
-        debug: var=output.stdout_lines
+          - "8999:8080"
