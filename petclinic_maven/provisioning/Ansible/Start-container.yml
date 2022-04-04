@@ -3,10 +3,17 @@
   user: VMTest
   tasks:
     
-    - name: Start container
-      become: yes
-      docker_container:
-        name: Test_container
-        image: juan8295/clinic_tomcat:1.0
-        command: docker run -itd -p 8090:8080 clinic_tomcat:1.0 /bin/bash
+    #- name: Start container
+      #become: yes
+      #docker_container:
+        #name: Test_container
+        #image: juan8295/clinic_tomcat:1.0
+        #command: docker run -itd -p 8090:8080 clinic_tomcat:1.0 /bin/bash
        
+    - name: Create container
+      docker_container:
+        name: TestContainer
+        image: juan8295/clinic_tomcat:1.0
+        state: started
+        ports: "8090:8080"
+      
