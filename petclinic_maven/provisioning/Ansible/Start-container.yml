@@ -20,3 +20,5 @@
         pull: true
         ports:
           - "8080:8999"
+        register: "output"
+        debug: var=output.stdout_lines
