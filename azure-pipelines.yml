@@ -64,12 +64,6 @@ steps:
     script: terraform output -raw public_ip_address > ~/VMTest_public_IP
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
-- task: Bash@3
-  displayName: login to VM
-  inputs:
-    targetType: inline
-    workingDirectory: /home/azureuser/
-    script: ssh -i VMTest_rsa_key.pem azureuser@VMTest_public_IP
 
 - task: Bash@3
   displayName: present rsa key to authorized keys file of the testing environment, install some ansible dependencies
