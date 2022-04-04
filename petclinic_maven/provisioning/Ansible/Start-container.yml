@@ -11,10 +11,8 @@
         
     - name: Create container
       become: true 
-      docker_container:
-        name: TestContainer
-        image: juan8295/clinic_tomcat:1.0
-        state: started
-        ports: "8090:8080"
-     
+      command: docker run -itd -p 8090:8080 clinic_tomcat:1.0
+      register: "output"
+    
     - debug: var=output.stdout_lines
+ 
