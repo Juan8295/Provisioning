@@ -20,16 +20,19 @@ steps:
     #inlineScript: 'az account show'
 
 - task: TerraformCLI@0
+  displayName: Terraform Init
   inputs:
     command: 'init'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
     allowTelemetryCollection: true
 - task: TerraformCLI@0
+  displayName: Terraform Validate
   inputs:
     command: 'validate'
     allowTelemetryCollection: true
 
 - task: TerraformCLI@0
+  displayName: Terraform Plan
   inputs:
     command: 'plan'
     environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
@@ -41,6 +44,7 @@ steps:
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
 
 - task: TerraformCLI@0
+  displayName: Terraform Apply
   inputs:
     command: 'apply'
     #commandOptions: tfplan
@@ -51,7 +55,7 @@ steps:
     allowTelemetryCollection: true
 
 - task: Bash@3
-  displayName: write private key
+  displayName: write out private key
   inputs:
     targetType: 'inline'
     script: 'terraform output -raw tls_private_key > ~/VMTest_rsa_key.pem && echo "write succesfull" && sudo chmod 600 ~/VMTest_rsa_key.pem'
@@ -81,7 +85,7 @@ steps:
     #script: ansible-playbook ansible-terraform-install.yml
 
 - task: Bash@3
-  displayName: Install Docker
+  displayName: Install Docker & login & pull dockerimage
   inputs:
     workingDirectory: 'petclinic_maven/provisioning/Ansible'
     targetType: inline
