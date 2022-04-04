@@ -1,6 +1,7 @@
 - name: "run petclinic docker container"
   hosts: all
   user: VMTest
+  become: true
   tasks:  
     #- name: Start container
       #become: yes
@@ -11,6 +12,7 @@
         
 
     - name: ensure a container is running
+      become: true
       docker_container:
         name: TestContainer
         state: started
