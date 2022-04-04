@@ -69,7 +69,7 @@ steps:
   inputs:
     targetType: inline
     workingDirectory: /home/azureuser/
-    script: ssh -i VMTest_rsa_key.pem azureuser@$(PUBLIC_IP)
+    script: ssh -i VMTest_rsa_key.pem azureuser@VMTest_public_IP
 
 #- task: Bash@3
   #displayName: Install ansible and terraform
