@@ -1,8 +1,7 @@
 - name: "run petclinic docker container"
   hosts: all
   user: VMTest
-  tasks:
-    
+  tasks:  
     #- name: Start container
       #become: yes
       #docker_container:
@@ -11,6 +10,7 @@
         #command: docker run -itd -p 8090:8080 clinic_tomcat:1.0 /bin/bash
        
     - name: Create container
+      become: true 
       docker_container:
         name: TestContainer
         image: juan8295/clinic_tomcat:1.0
