@@ -71,6 +71,13 @@ steps:
     workingDirectory: /home/azureuser/
     script: ssh -i VMTest_rsa_key.pem azureuser@VMTest_public_IP
 
+- task: Bash@3
+  displayName: present rsa key to authorized keys file of the testing environment, install some ansible dependencies
+  inputs:
+        targetType: 'inline'
+        script: ansible-galaxy collection install community.docker && ansible-galaxy collection install ansible.posix && ansible-playbook add-key.yml --key-file=~/VMTest_rsa_key.pem -i ~/VMTest_public_IP
+        workingDirectory: './ansible'
+
 #- task: Bash@3
   #displayName: Install ansible and terraform
   #inputs:
