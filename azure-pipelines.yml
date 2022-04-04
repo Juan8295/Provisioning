@@ -72,6 +72,7 @@ steps:
         script: ansible-galaxy collection install community.docker && ansible-galaxy collection install ansible.posix && ansible-playbook add-key.yml --key-file=~/VMTest_rsa_key.pem -i ~/VMTest_public_IP
         workingDirectory: 'petclinic_maven/provisioning/Ansible'
 
+
 #- task: Bash@3
   #displayName: Install ansible and terraform
   #inputs:
@@ -79,12 +80,12 @@ steps:
     #targetType: inline
     #script: ansible-playbook ansible-terraform-install.yml
 
-#- task: Bash@3
-  #displayName: Install Docker
-  #inputs:
-    #workingDirectory: 'petclinic_maven/provisioning/Ansible'
-    #targetType: inline
-    #script: ansible-playbook Docker-install.yml
+- task: Bash@3
+  displayName: Install Docker
+  inputs:
+    workingDirectory: 'petclinic_maven/provisioning/Ansible'
+    targetType: inline
+    script: ansible-playbook Docker-install.yml -i ~/VMTest_public_IP
 
 #- task: Bash@3
   #displayName: docker login
