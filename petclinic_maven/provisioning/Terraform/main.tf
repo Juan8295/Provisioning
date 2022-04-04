@@ -74,8 +74,8 @@ resource "azurerm_network_security_group" "nsg" {
     destination_address_prefix = "*"
   }
         security_rule {
-    name                       = "Petclinic"
-    priority                   = 100
+    name                       = "http"
+    priority                   = 105
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "*"
