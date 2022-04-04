@@ -8,7 +8,7 @@
         #name: Test_container
         #image: juan8295/clinic_tomcat:1.0
         #command: docker run -itd -p 8090:8080 clinic_tomcat:1.0 /bin/bash
-       
+        
     - name: Create container
       become: true 
       docker_container:
@@ -16,4 +16,5 @@
         image: juan8295/clinic_tomcat:1.0
         state: started
         ports: "8090:8080"
-      
+     
+    - debug: var=output.stdout_lines
