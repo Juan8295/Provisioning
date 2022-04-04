@@ -31,9 +31,10 @@
         
     - name: Log into DockerHub
       docker_login:
-      username: juan8295
-      password: Alejandro8295!
-      email: juan.goez.cordoba@devoteam.com
+        username: juan8295
+        password: Alejandro8295!
+        
+      
 
     #- name: Pull default Docker image
       #docker_image:
