@@ -38,7 +38,7 @@ steps:
     environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
     providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
     #runAzLogin: true
-    #commandOptions: '-out'
+    commandOptions: -lock=false
     allowTelemetryCollection: true
     #publishPlanResults: 'tfplan'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
