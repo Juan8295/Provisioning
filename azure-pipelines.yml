@@ -109,12 +109,12 @@ steps:
   displayName: execute push
   inputs:
     targetType: 'inline'
-    workingDirectory: /home/azureuser/myagent/_work/4/s/
+    workingDirectory: /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning
     script: |
             git checkout test
             git add . 
             git commit -m "push" 
-            git push git@github.com:Juan8295/Provisioning.git
+            git push git@github.com:Juan8295/Provisioning.git HEAD:Petclinic
             
             #git push git@github.com:Juan8295/azure_pipeline.git HEAD:master
 
