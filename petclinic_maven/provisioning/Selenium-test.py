@@ -10,7 +10,13 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
+with open('/home/azureuser/VMTest_public_IP', 'r') as file:
+    base_url = file.read().rstrip()
+
+url = "http://" + base_url + ":8090"
+
 class AddEditTest(unittest.TestCase):
+    
     def setUp(self):
         chrome_options = Options()
         chrome_options.add_argument('--headless')
@@ -18,7 +24,7 @@ class AddEditTest(unittest.TestCase):
         chrome_options.add_argument('--disable-dev-shm-usage')
         self.driver = webdriver.Chrome("/home/azureuser/Downloads/chromedriver",chrome_options=chrome_options)
         self.driver.implicitly_wait(30)
-        self.base_url = "http://20.105.161.20:8090"
+        #self.base_url = "http://20.105.161.20:8090"
         self.verificationErrors = []
         self.accept_next_alert = True
     # the first test is to add a new owner
@@ -26,7 +32,7 @@ class AddEditTest(unittest.TestCase):
         driver = self.driver
         # Label: Test
         # ERROR: Caught exception [ERROR: Unsupported command [resizeWindow | 1848,1007 | ]]
-        driver.get("http://20.105.161.20:8090/owners/find")
+        driver.get(url)
         driver.find_element(By.CSS_SELECTOR,"a[title=\"find owners\"]").click()
         driver.find_element(By.LINK_TEXT,"Add Owner").click()
         driver.find_element(By.ID,"firstName").click()
