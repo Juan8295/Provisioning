@@ -137,6 +137,7 @@ steps:
   inputs:
     command: 'destroy'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    commandOptions: -lock=false
     environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
     providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
     allowTelemetryCollection: true
