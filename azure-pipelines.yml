@@ -98,6 +98,35 @@ steps:
    targetType: inline
    script: ansible-playbook Start-container.yml -i ~/VMTest_public_IP
 
+- task: Bash@3
+  displayName: execute-JMeter-test
+  inputs:
+    targetType: 'inline'
+    workingDirectory: /opt/apache-jmeter-5.4.1/bin/
+    script: |
+      ./jmeter.sh -n -t /home/azureuser/myagent/_work/4/s/TestPro.jmx -l /home/azureuser/myagent/_work/4/s/testresults.jtl
+- task: Bash@3
+  displayName: execute push
+  inputs:
+    targetType: 'inline'
+    workingDirectory: /home/azureuser/myagent/_work/4/s/
+    script: |
+            git checkout test
+            git add . 
+            git commit -m "push" 
+            git push git@github.com:Juan8295/Provisioning.git
+            
+            #git push git@github.com:Juan8295/azure_pipeline.git HEAD:master
+
+#- task: Bash@3
+  #displayName: Selenium-test
+  #inputs:
+   #targetType: 'inline'
+   #workingDirectory: /home/azureuser/myagent/_work/2/s/
+   #script: 
+     #pip install selenium ;
+     #python3 Selenium-test.py
+
 
 #- task: Bash@3
   #displayName: docker login
