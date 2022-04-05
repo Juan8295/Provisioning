@@ -111,6 +111,7 @@ steps:
     targetType: 'inline'
     workingDirectory: /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning
     script: |
+            git pull git@github.com:Juan8295/Provisioning.git
             git checkout test
             git add . 
             git commit -m "push" 
@@ -118,14 +119,14 @@ steps:
             
             #git push git@github.com:Juan8295/azure_pipeline.git HEAD:master
 
-#- task: Bash@3
-  #displayName: Selenium-test
-  #inputs:
-   #targetType: 'inline'
-   #workingDirectory: /home/azureuser/myagent/_work/2/s/
-   #script: 
-     #pip install selenium ;
-     #python3 Selenium-test.py
+- task: Bash@3
+  displayName: Selenium-test
+  inputs:
+   targetType: 'inline'
+   workingDirectory: /home/azureuser/myagent/_work/2/s/petclinic_maven/provisioning
+   script: 
+     pip install selenium ;
+     python3 Selenium-test.py
 
 
 #- task: Bash@3
