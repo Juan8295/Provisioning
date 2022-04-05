@@ -104,7 +104,7 @@ steps:
     targetType: 'inline'
     workingDirectory: /opt/apache-jmeter-5.4.1/bin/
     script: |
-      ./jmeter.sh -n -t /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning/TestPro.jmx -l /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning/testresults.jtl
+      ./jmeter.sh -n -t /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning/TestPro.jmx -Jhost=$(cat ~/VMTest_public_IP ) -l /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning/testresults.jtl
 - task: Bash@3
   displayName: execute push
   inputs:
