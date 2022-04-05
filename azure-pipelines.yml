@@ -123,7 +123,7 @@ steps:
   displayName: Selenium-test
   inputs:
    targetType: 'inline'
-   workingDirectory: /home/azureuser/myagent/_work/2/s/petclinic_maven/provisioning
+   workingDirectory: /home/azureuser/myagent/_work/4/s/petclinic_maven/provisioning
    script: 
      pip install selenium ;
      python3 Selenium-test.py
