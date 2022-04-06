@@ -159,4 +159,4 @@ steps:
   displayName: Start Productie omgeving
   inputs:
     targetType: 'inline'
-    script: sudo docker run -itd -p 8091:8080 clinic_tomcat:1.0
+    script: sudo docker run -itd -p 8091:8080 juandoc8295/clinic_tomcat:1.0
