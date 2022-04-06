@@ -135,13 +135,14 @@ steps:
     script: ansible-playbook Stop-container.yml -i ~/VMTest_public_IP
 
 - task: TerraformCLI@0
+  displayName: Terraform Destroy
   inputs:
     command: 'destroy'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
     commandOptions: -lock=false
     provider: 'azurerm'
     environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
-    providerAzureRmSubscriptionId: 'f82b3c62-b635-402b-afa2-a1a807bbfd42'
+    providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
     allowTelemetryCollection: true
 
 - task: Bash@3
