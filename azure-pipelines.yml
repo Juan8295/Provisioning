@@ -139,8 +139,9 @@ steps:
     command: 'destroy'
     workingDirectory: 'petclinic_maven/provisioning/Terraform'
     commandOptions: -lock=false
+    provider: 'azurerm'
     environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
-    providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
+    providerAzureRmSubscriptionId: 'f82b3c62-b635-402b-afa2-a1a807bbfd42'
     allowTelemetryCollection: true
 
 - task: Bash@3
@@ -159,4 +160,4 @@ steps:
   displayName: Start Productie omgeving
   inputs:
     targetType: 'inline'
-    script: sudo docker run -itd -p 8091:8080 juandoc8295/clinic_tomcat:1.0
+    script: sudo docker run -itd -p 8091:8080 juan8295/clinic_tomcat:1.0
