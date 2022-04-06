@@ -142,14 +142,20 @@ steps:
     providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
     allowTelemetryCollection: true
 
-#- task: Bash@3
-  #displayName: docker login
-  #inputs:
-    #targetType: 'inline'
-    #script: sudo docker login -u "juan8295" -p $(DOCKERPASSW) docker.io
+- task: Bash@3
+  displayName: docker login
+  inputs:
+    targetType: 'inline'
+    script: sudo docker login -u "juan8295" -p $(DOCKERPASSW) docker.io
 
-#- task: Bash@3
-  #displayName: pull dockerimage
-  #inputs:
-    #targetType: 'inline'
-    #script: sudo docker pull juan8295/clinic_tomcat:1.0
+- task: Bash@3
+  displayName: pull dockerimage
+  inputs:
+    targetType: 'inline'
+    script: sudo docker pull juan8295/clinic_tomcat:1.0
+
+- task: Bash@3
+  displayName: Start Productie omgeving
+  inputs:
+    targetType: 'inline'
+    script: sudo docker run -itd -p 8091:8080 clinic_tomcat:1.0
