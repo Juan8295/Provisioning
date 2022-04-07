@@ -23,7 +23,7 @@ steps:
   displayName: Terraform Init
   inputs:
     command: 'init'
-    workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    workingDirectory: $(TERRAFORM_DIR)
     allowTelemetryCollection: true
     commandOptions: -reconfigure
 - task: TerraformCLI@0
@@ -36,22 +36,22 @@ steps:
   displayName: Terraform Plan
   inputs:
     command: 'plan'
-    environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
-    providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
+    environmentServiceName: $(AZURE_CLI_SERVICE_PRINCIPAL)
+    providerAzureRmSubscriptionId: $(SUBSCRIPTIONID)
     #runAzLogin: true
     commandOptions: -lock=false
     allowTelemetryCollection: true
     #publishPlanResults: 'tfplan'
-    workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    workingDirectory: $(TERRAFORM_DIR)
 
 - task: TerraformCLI@0
   displayName: Terraform Apply
   inputs:
     command: 'apply'
     commandOptions: -lock=false
-    workingDirectory: 'petclinic_maven/provisioning/Terraform'
-    environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
-    providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
+    workingDirectory: $(TERRAFORM_DIR)
+    environmentServiceName: $(AZURE_CLI_SERVICE_PRINCIPAL)
+    providerAzureRmSubscriptionId: $(SUBSCRIPTIONID)
     #runAzLogin: true
     allowTelemetryCollection: true
 
@@ -60,14 +60,14 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'terraform output -raw tls_private_key > ~/VMTest_rsa_key.pem && echo "write succesfull" && sudo chmod 600 ~/VMTest_rsa_key.pem'
-    workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    workingDirectory: $(TERRAFORM_DIR)
 
 - task: Bash@3
   displayName: Store public IP of testVM in VMTest_public_IP
   inputs:
     targetType: inline
     script: terraform output -raw public_ip_address > ~/VMTest_public_IP
-    workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    workingDirectory: $(TERRAFORM_DIR)
 
 
 - task: Bash@3
@@ -75,7 +75,7 @@ steps:
   inputs:
         targetType: 'inline'
         script: ansible-galaxy collection install community.docker && ansible-galaxy collection install ansible.posix && ansible-playbook add-key.yml --key-file=~/VMTest_rsa_key.pem -i ~/VMTest_public_IP
-        workingDirectory: 'petclinic_maven/provisioning/Ansible'
+        workingDirectory: $(ANSIBLE_DIR)
 
 
 #- task: Bash@3
@@ -88,14 +88,14 @@ steps:
 - task: Bash@3
   displayName: Install Docker & login & pull dockerimage
   inputs:
-    workingDirectory: 'petclinic_maven/provisioning/Ansible'
+    workingDirectory: $(ANSIBLE_DIR)
     targetType: inline
     script: ansible-playbook Docker-install.yml -i ~/VMTest_public_IP
 
 - task: Bash@3
   displayName: Start container
   inputs:
-   workingDirectory: 'petclinic_maven/provisioning/Ansible'
+   workingDirectory: $(ANSIBLE_DIR)
    targetType: inline
    script: ansible-playbook Start-container.yml -i ~/VMTest_public_IP
 
@@ -131,18 +131,18 @@ steps:
   displayName: stop docker container
   inputs:
     targetType: 'inline'
-    workingDirectory: 'petclinic_maven/provisioning/Ansible'
+    workingDirectory: $(ANSIBLE_DIR)
     script: ansible-playbook Stop-container.yml -i ~/VMTest_public_IP
 
 - task: TerraformCLI@0
   displayName: Terraform Destroy
   inputs:
     command: 'destroy'
-    workingDirectory: 'petclinic_maven/provisioning/Terraform'
+    workingDirectory: $(TERRAFORM_DIR)
     commandOptions: -lock=false
     provider: 'azurerm'
-    environmentServiceName: 'azure-cli-2022-04-01-09-22-56'
-    providerAzureRmSubscriptionId: '41e50375-b926-4bc4-9045-348f359cf721'
+    environmentServiceName: $(AZURE_CLI_SERVICE_PRINCIPAL)
+    providerAzureRmSubscriptionId: $(SUBSCRIPTIONID)
     allowTelemetryCollection: true
 
 - task: Bash@3
