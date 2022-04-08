@@ -163,7 +163,7 @@ resource "azurerm_linux_virtual_machine" "linuxvm" {
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic.id]
-  size                  = "Standard_DS1_v2"
+  size                  = "Standard_A2_v2"
 
   os_disk {
     name                 = "myOsDisk"
