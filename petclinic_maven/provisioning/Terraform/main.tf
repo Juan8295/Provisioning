@@ -167,7 +167,7 @@ resource "azurerm_linux_virtual_machine" "linuxvm" {
 
   os_disk {
     name                 = "myOsDisk"
-    disk_size_gb         = 100
+    caching              = "ReadWrite"
     storage_account_type = "StandardSSD_LRS"
   }
 
