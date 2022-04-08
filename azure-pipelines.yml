@@ -96,13 +96,21 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
+#deploy
+
 - task: Bash@3
-  displayName: Install Docker & login & pull dockerimage
+  displayName: Install Docker 
   inputs:
     workingDirectory: $(ANSIBLE_DIR)
     targetType: inline
     script: ansible-playbook Docker-install.yml -i ~/VMTest_public_IP
 
+- task: Bash@3
+  displayName: docker login and create image
+  inputs:
+    targetType: 'inline'
+    script: sudo docker login -u "juan8295" -p $(DOCKERPASSW) docker.io && ansible-playbook build-image.yml
+    workingDirectory: $(ANSIBLE_DIR)
 - task: Bash@3
   displayName: Start container
   inputs:
