@@ -84,6 +84,17 @@ steps:
     #workingDirectory: 'petclinic_maven/provisioning/Ansible'
     #targetType: inline
     #script: ansible-playbook ansible-terraform-install.yml
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'install'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 
 - task: Bash@3
   displayName: Install Docker & login & pull dockerimage
