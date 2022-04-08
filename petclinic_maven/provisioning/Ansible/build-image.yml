@@ -1,0 +1,21 @@
+- name: "build new petclinic docker image"
+  hosts: localhost
+  connection: local
+  tasks:
+
+  - name: Remove previously built images
+    become: yes
+    community.docker.docker_image:
+      state: absent
+      name: juan8295/clinic_tomcat:1.0
+   
+  - name: Build an image and push it to docker hub
+    become: yes
+    community.docker.docker_image:
+      name: juan8295/clinic_tomcat:1.0
+      build:
+        path: ../
+      repository: juan8295/clinic_tomcat:1.0
+      force_tag: yes
+      push: yes
+      source: build
