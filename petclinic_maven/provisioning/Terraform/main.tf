@@ -163,12 +163,12 @@ resource "azurerm_linux_virtual_machine" "linuxvm" {
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic.id]
-  size                  = "Standard_A1_v2"
+  size                  = "standard_DS1_v2"
 
   os_disk {
     name                 = "myOsDisk"
     caching              = "ReadWrite"
-    storage_account_type = "StandardSSD_LRS"
+    storage_account_type = "Premium_LRS"
   }
 
   source_image_reference {
