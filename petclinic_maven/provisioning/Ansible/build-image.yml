@@ -14,7 +14,7 @@
     community.docker.docker_image:
       name: juan8295/clinic_tomcat:1.0
       build:
-        path: ../
+        path: /home/azureuser/myagent/_work/4/s
       repository: juan8295/clinic_tomcat:1.0
       force_tag: yes
       push: yes
