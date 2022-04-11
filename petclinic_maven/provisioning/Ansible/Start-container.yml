@@ -3,13 +3,19 @@
   user: VMTest
   become: true
   tasks:  
-    #- name: Start container
-      #become: yes
-      #docker_container:
-        #name: Test_container
-        #image: juan8295/clinic_tomcat:1.0
-        #command: docker run -itd -p 8090:8080 clinic_tomcat:1.0 /bin/bash
-        
+
+    - name: Log into DockerHub
+      become: true
+      docker_login:
+        username: juan8295
+        password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          36613763343863666438333361316661356362636631623039303636653762383232383462613730
+          3063643165383334373130663666323735663832316430310a303432326563343966313061653939
+          30366561623561663437323837333830383263343237616138306332393939383063636339666631
+          3334313735663632300a636161343330393135313237366264323464323366316438633333333236
+          3264
+
 
     - name: ensure a container is running
       become: true
