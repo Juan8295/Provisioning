@@ -4,17 +4,12 @@
   become: true
   tasks:  
 
-    #- name: Log into DockerHub
-      #become: true
-      #docker_login:
-        #username: juan8295
-        #password: !vault |
-          #$ANSIBLE_VAULT;1.1;AES256
-          #36613763343863666438333361316661356362636631623039303636653762383232383462613730
-          #3063643165383334373130663666323735663832316430310a303432326563343966313061653939
-          #30366561623561663437323837333830383263343237616138306332393939383063636339666631
-          #3334313735663632300a636161343330393135313237366264323464323366316438633333333236
-          #3264
+    - name: Log into DockerHub
+      become: true
+      docker_login:
+        username: "{{ username }}"
+        password: "{{ password }}"
+    
     - name: Pull default Docker image
       docker_image:
         name: "juan8295/clinic_tomcat:1.0"
