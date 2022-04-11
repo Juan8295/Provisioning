@@ -1,0 +1,11 @@
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/web/CrashControllerTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/web/OwnerControllerTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceSpringDataJpaTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceJdbcTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/web/VisitControllerTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/web/PetTypeFormatterTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/web/VetControllerTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/web/PetControllerTests.java
+/home/juan/provisioningnew/Provisioning/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceJpaTests.java
