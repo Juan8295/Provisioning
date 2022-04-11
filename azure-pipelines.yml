@@ -116,7 +116,7 @@ steps:
   inputs:
    workingDirectory: $(ANSIBLE_DIR)
    targetType: inline
-   script: ansible-playbook Start-container.yml -i ~/VMTest_public_IP
+   script: ansible-playbook --vault-password-file /home/azureuser/.ssh/password.txt Start-container.yml -i ~/VMTest_public_IP
 
 - task: Bash@3
   displayName: execute-JMeter-test
