@@ -96,7 +96,6 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
-#deploy
 
 - task: Bash@3
   displayName: Install Docker 
